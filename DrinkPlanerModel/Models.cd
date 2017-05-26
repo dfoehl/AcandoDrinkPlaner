@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="DrinkPlaner.Model.Supply">
+    <Position X="7" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAgAAAAAAAAAAACAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Supply.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Drink" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DrinkPlaner.Model.Person">
+    <Position X="12" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>Person.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Parties" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="DrinkPlaner.Model.Party">
+    <Position X="7.5" Y="1.25" Width="1.5" />
+    <AssociationLine Name="Creator" Type="DrinkPlaner.Model.Person" FixedToPoint="true">
+      <Path>
+        <Point X="9" Y="1.688" />
+        <Point X="12" Y="1.688" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAQAAAAACAAQAAAQAAAAAAAIBEAAAAAgAAAg=</HashCode>
+      <FileName>Party.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Creator" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Guests" />
+      <Property Name="NeededDrinks" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="DrinkPlaner.Model.Participation">
+    <Position X="10.5" Y="4.75" Width="1.5" />
+    <AssociationLine Name="Person" Type="DrinkPlaner.Model.Person" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="11.711" Y="4.75" />
+        <Point X="11.711" Y="3.372" />
+        <Point X="12.5" Y="3.372" />
+        <Point X="12.5" Y="2.997" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AMACAAAAAAAAAAAEAAAAAAAEAAAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>Participation.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Party" />
+      <Property Name="Person" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Supply" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="DrinkPlaner.Model.PackageUnit">
+    <Position X="4.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACEAAAAAAAAAAAAAAAAAAAAAAABAAAAAAgCAAAAAA=</HashCode>
+      <FileName>PackageUnit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DrinkPlaner.Model.Drink">
+    <Position X="4.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAEAAAACAAEAAA=</HashCode>
+      <FileName>Drink.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="PackageUnit" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

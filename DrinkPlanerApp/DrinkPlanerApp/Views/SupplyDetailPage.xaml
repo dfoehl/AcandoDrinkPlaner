@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DrinkPlanerApp.Views.SupplyDetailPage"
+             Title="Bedarf anpassen">
+    <StackLayout Orientation="Vertical">
+        <Picker Title="Getränk" ItemsSource="{Binding Drinks}" ItemDisplayBinding="{Binding Text}" SelectedItem="{Binding Drink}" />
+        <StackLayout Orientation="Horizontal"><Entry Keyboard="Numeric" Text="{Binding Amount}" Placeholder="Menge" HorizontalTextAlignment="End"/>
+            <Label Text="{Binding Unit}"/>
+        </StackLayout>
+        <Button Text="Löschen" Clicked="DeleteSupplyAsync"/>
+    </StackLayout>
+</ContentPage>

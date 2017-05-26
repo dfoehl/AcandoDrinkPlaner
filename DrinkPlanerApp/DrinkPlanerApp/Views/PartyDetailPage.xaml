@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DrinkPlanerApp.Views.PartyDetailPage"
+             Title="{Binding Name, StringFormat='Party {0}'}">
+    <Grid HorizontalOptions="Fill" VerticalOptions="Fill">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackLayout Orientation="Vertical" Grid.Row="0">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="{Binding Date, StringFormat='{0:g}'}"/>
+                <Button Text="Speichern" IsVisible="{Binding ModelChanged}" Clicked="Save"/>
+            </StackLayout>
+            <Label Text="{Binding Creator.Name }"/>
+        </StackLayout>
+        <Grid  Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="40" />
+            </Grid.ColumnDefinitions>
+            <Label Text="Gäste"/>
+            <Button Text="+" Clicked="AddGuest" Grid.Column="1" WidthRequest="50"/>
+        </Grid>
+        <ListView BindingContext="{Binding ParticipationsVM}" ItemsSource="{Binding Participations}" Grid.Row="2" BackgroundColor="Silver" ItemTapped="ParticipationSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Margin="3" BackgroundColor="White">
+                            <Label Text="{Binding Person.Name}" FontSize="20" TextColor="Navy"/>
+                            <Label Text="{Binding Supply.Count, StringFormat='Getränke {0}'}" Grid.Column="1"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Grid  Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="40" />
+            </Grid.ColumnDefinitions>
+            <Label Text="Benötigte Getränke"/>
+            <Button Text="+" IsVisible="{Binding CanEditDrinks}" Clicked="AddSupply" Grid.Column="1" WidthRequest="50"/>
+        </Grid>
+        <ListView BindingContext="{Binding SuppliesVM}" ItemsSource="{Binding Supplies}" RowHeight="55" Grid.Row="4" BackgroundColor="Silver" ItemTapped="SupplySelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Margin="3" BackgroundColor="White">
+                            <Label Text="{Binding Drink.Name}" FontSize="20" TextColor="Navy"/>
+                            <StackLayout Orientation="Horizontal" Grid.Row="1">
+                                <Label Text="{Binding Amount}" />
+                                <Label Text="x" />
+                                <Label Text="{Binding Drink.PackageUnit.Text}" />
+                            </StackLayout>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</ContentPage>

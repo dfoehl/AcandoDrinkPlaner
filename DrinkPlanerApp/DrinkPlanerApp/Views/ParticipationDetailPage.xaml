@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DrinkPlanerApp.Views.ParticipationDetailPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Label Text="{Binding Person.Name}"/>
+        <StackLayout Orientation="Horizontal" Grid.Row="1">
+            <Button Text="Save" IsVisible="{Binding ModelChanged}" Clicked="SaveClicked" />
+            <Button Text="+" Clicked="NewSupply"/>
+        </StackLayout>
+        <ListView Grid.Row="2" ItemsSource="{Binding Supplies}" ItemTapped="SupplySelected" RowHeight="55" BackgroundColor="Silver">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Margin="3" BackgroundColor="White">
+                            <Label Text="{Binding Drink.Name}" FontSize="20" TextColor="Navy"/>
+                            <StackLayout Orientation="Horizontal" Grid.Row="1">
+                                <Label Text="{Binding Amount}" />
+                                <Label Text="x" />
+                                <Label Text="{Binding Drink.PackageUnit.Text}" />
+                            </StackLayout>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</ContentPage>

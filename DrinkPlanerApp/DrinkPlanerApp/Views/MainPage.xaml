@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:DrinkPlanerApp"
+             xmlns:converter="clr-namespace:DrinkPlanerApp.Converter"
+             x:Class="DrinkPlanerApp.Views.MainPage"
+             Title="Party-Übersicht">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:DrinksValueConverter x:Key="drinkVC"/>
+            <converter:GuestValueConverter x:Key="guestVC" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid VerticalOptions="Fill" HorizontalOptions="Fill">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <Button Text="+" Clicked="AddParty" />
+        <ListView
+            Grid.Row="1"
+            ItemsSource="{Binding Parties}"
+            RowHeight="65"
+            BackgroundColor="Silver"
+            ItemTapped="PartyTapped"
+            Refreshing="PartiesRefreshing"
+            IsRefreshing="{Binding IsLoading, Mode=TwoWay}"
+            IsPullToRefreshEnabled="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Margin="3" BackgroundColor="White">
+                            <Label Text="{Binding Name}" Grid.Row="0" Grid.ColumnSpan="3" FontSize="20" TextColor="Navy"/>
+                            <Label Text="{Binding Date, StringFormat='{0:g}'}" Grid.Row="1"/>
+                            <Label Text="{Binding NeededDrinks.Count, Converter={StaticResource drinkVC}}" Grid.Row="1" Grid.Column="1" HorizontalTextAlignment="Center"/>
+                            <Label Text="{Binding Guests.Count, Converter={StaticResource guestVC}}" Grid.Row="1" Grid.Column="2" HorizontalTextAlignment="End"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</ContentPage>

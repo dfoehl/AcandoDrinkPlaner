@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DrinkPlanerApp.Views.PartyManageGuestsPage"
+             Title="Gäste hinzufügen">
+    <Grid HorizontalOptions="Fill" VerticalOptions="Fill">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Text="Nicht Eingeladene" Grid.Row="0"/>
+        <ListView ItemsSource="{Binding NonGuests}" RowHeight="45" Grid.Row="1" BackgroundColor="Silver" ItemTapped="HandleAddGuest" IsRefreshing="{Binding IsLoadingNonGuests}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Margin="3" BackgroundColor="White">
+                            <Label Text="{Binding Name}" FontSize="20" TextColor="Navy"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Label Text="Gäste" Grid.Row="2"/>
+        <ListView ItemsSource="{Binding Participations}" RowHeight="55" Grid.Row="3" BackgroundColor="Silver" ItemTapped="HandleRemoveGuest">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Margin="3" BackgroundColor="White">
+                            <Label Text="{Binding Person.Name}" FontSize="20" TextColor="Navy"/>
+                            <Label Text="{Binding Supply.Count, StringFormat='Getränke {0}'}" Grid.Column="1"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</ContentPage>

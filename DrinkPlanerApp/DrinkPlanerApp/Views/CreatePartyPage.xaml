@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             x:Class="DrinkPlanerApp.Views.CreatePartyPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <Label Text="Name der Party: "/>
+        <Entry Text="{Binding Name}" Grid.Column="1"/>
+        <Label Text="Datum der Party: " Grid.Row="1"/>
+        <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
+            <DatePicker Date="{Binding Date}" MinimumDate="{Binding Now}"/>
+            <TimePicker Time="{Binding Time}"/>
+        </StackLayout>
+        <Label Text="Organisator: " Grid.Row="2"/>
+        <Label Text="{Binding Creator.Name}" Grid.Row="2" Grid.Column="1"/>        
+        <Button Text="Erstellen" Grid.Row="3" Grid.ColumnSpan="2" Clicked="CreateParty"/>
+    </Grid>
+</ContentPage>
